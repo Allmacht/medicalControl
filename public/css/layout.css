@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+body{
+  font-family: 'Ubuntu', sans-serif;
+}
+.navbar-right{
+  padding-left: 15px;
+  font-size: 17px;
+  color:#6C757D;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #6C757D:
+}
+.name-logo {
+    font-size: 23px;
+    font-family: 'Ubuntu', sans-serif;
+}
+.navbar-style {
+    background-color: #f7f7f7 !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+}
+
+.img-login {
+    width: 400px;
+    height: 400px;
+}
+.logout-icon{
+  color: red;
+}
+.user-icon-navbar{
+  color: #6997e0;
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.img-icon-user{
+  width: 40px;
+  height: 40px;
+}
+
+.user-name-text{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+}
+
+.shortcut-button{
+  width: 90px;
+  height: 90px;
+}
+.shortcut-icon{
+  font-size: 65px;
+}
+.text-notification{
+  font-size: 17px;
+}
+
+@media (min-width: 992px){
+  .user-collapse-navbar{
+    width: 300px;
+  }
+}
+@media (max-width: 991px) {
+    .logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .img-login {
+        width: 200px;
+        height: 200px;
+    }
+    .shortcut-div{
+      display: none;
+    }
+}

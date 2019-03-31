@@ -1,0 +1,17 @@
+@media(min-width:991px){
+  .div-0{
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+}
+.btn-table{
+  width: 40px;
+  height: 40px;
+  transition: 0.5s;
+}
+.btn-table:hover{
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.btn-table-icon{
+  font-size: 17px;
+}
