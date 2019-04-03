@@ -4,7 +4,15 @@ $(document).ready(function() {
         top: -90,
     });
 
-    $('.open-modal').click(function(){
-      $('#code_id').val($(this).data('code'));
+    $('.open-modal').click(function() {
+        $('#code_id').val($(this).data('code'));
+    });
+
+    $('.modal-activate').click(function() {
+        $('#code_activate').val($(this).data('code'));
+    });
+
+    $('.modal-delete').click(function() {
+        $('#code_delete').val($(this).data('code'));
     });
 });

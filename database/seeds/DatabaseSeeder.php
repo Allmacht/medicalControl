@@ -15,11 +15,13 @@ class DatabaseSeeder extends Seeder
           'roles',
           'users',
           'buildings',
+          'personal_informations'
       ]);
 
       $this->call(RolesSeeder::class);
       $this->call(UsersSeeder::class);
       $this->call(BuildingsSeeder::class);
+      $this->call(personalInformationSeeder::class);
 
     }
 

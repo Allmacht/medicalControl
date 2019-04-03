@@ -66,29 +66,29 @@
                                 <i class="fas fa-eye btn-table-icon"></i>
                             </a>
                             @if (Auth::user()->hasRole('SAdministrador'))
-                              <span data-toggle="tooltip" data-placement="top" title="Modificar">
-                                  <a href="#" class="btn btn-warning btn-table px-0">
-                                      <i class="fas fa-edit btn-table-icon"></i>
-                                  </a>
-                              </span>
-                              @if ($building->status)
-                                <span data-toggle="tooltip" data-placement="right" title="Desactivar">
-                                    <button type="button" class="btn btn-danger btn-table px-0 open-modal" data-toggle="modal" data-target="#modalDisable" data-code="{{$building->code_id}}">
-                                        <i class="fas fa-times btn-table-icon"></i>
-                                    </button>
-                                </span>
-                              @else
-                                <span data-toggle="tooltip" data-placement="top" title="Activar">
-                                    <button type="button" class="btn btn-success btn-table px-0" data-toggle="modal">
-                                        <i class="fas fa-check btn-table-icon"></i>
-                                    </button>
-                                </span>
-                                <span data-toggle="tooltip" data-placement="right" title="Eliminar">
-                                    <button type="button" class="btn btn-danger btn-table px-0" data-toggle="modal">
-                                        <i class="fas fa-times btn-table-icon"></i>
-                                    </button>
-                                </span>
-                              @endif
+                            <span data-toggle="tooltip" data-placement="top" title="Modificar">
+                                <a href="#" class="btn btn-warning btn-table px-0">
+                                    <i class="fas fa-edit btn-table-icon"></i>
+                                </a>
+                            </span>
+                            @if ($building->status)
+                            <span data-toggle="tooltip" data-placement="right" title="Desactivar">
+                                <button type="button" class="btn btn-danger btn-table px-0 open-modal" data-toggle="modal" data-target="#modalDisable" data-code="{{$building->code_id}}">
+                                    <i class="fas fa-times btn-table-icon"></i>
+                                </button>
+                            </span>
+                            @else
+                            <span data-toggle="tooltip" data-placement="top" title="Activar">
+                                <button type="button" class="btn btn-success btn-table px-0 modal-activate" data-toggle="modal" data-target="#modalActivate" data-code="{{$building->code_id}}">
+                                    <i class="fas fa-check btn-table-icon"></i>
+                                </button>
+                            </span>
+                            <span data-toggle="tooltip" data-placement="right" title="Eliminar">
+                                <button type="button" class="btn btn-danger btn-table px-0 modal-delete" data-toggle="modal" data-target="#modalDelete" data-code="{{$building->code_id}}">
+                                    <i class="fas fa-times-circle btn-table-icons"></i>
+                                </button>
+                            </span>
+                            @endif
                             @endif
 
                         </td>
@@ -106,7 +106,9 @@
 </div>
 
 @if (Auth::user()->hasRole('SAdministrador'))
-  @include('Buildings.modalDisable')
+@include('Buildings.modalDisable')
+@include('Buildings.modalActivate')
+@include('Buildings.modalDelete')
 @endif
 
 @endsection

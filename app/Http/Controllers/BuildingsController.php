@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use App\personal_information as information;
 use App\Building;
 use App\User;
 
@@ -147,7 +148,7 @@ class BuildingsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+   * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -165,13 +166,53 @@ class BuildingsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function disable(Request $request){
-       
-       dd($request->code_id);
+     public function activate(Request $request){
+       if (Auth::user()->hasRole('SAdministrador')) {
+         $building = Building::where('code_id',$request->code_activate)->first();
+
+         if (empty($building)) {
+           return redirect()->route('buildings.index')->withError('Ha ocurrido un error');
+         }else{
+           $building->status = true;
+           $building->save();
+           return redirect()->route('buildings.index')->withStatus('Edificio activado correctamente');
+         }
+       }
+       else{
+         abort(404);
+       }
 
      }
-    public function destroy($id)
+
+    public function disable(Request $request){
+
+      $users = information::where('building_id',$request->code_id)->whereStatus(true)->get();
+
+      //consultorios
+
+      if($users->isEmpty()){
+        $building = Building::where('code_id', $request->code_id)->first();
+        $building->status = false;
+        $building->save();
+
+        return redirect()->route('buildings.index')->withStatus('Edificio desactivado correctamente');
+      }
+      else{
+        return redirect()->route('buildings.index')->withErrors('Existe personal activo en este edificio');
+      }
+    }
+
+    public function destroy(Request $request)
     {
-        //
+      if (Auth::user()->hasRole('SAdministrador')) {
+        $building = Building::where('code_id', $request->code_delete)->first();
+        if (empty($building)) {
+          return redirect()->route('buildings.index')->withError('Ha ocurrido un error');
+        }else{
+          $building->delete();
+          return redirect()->route('buildings.index')->withStatus('Edificio eliminado correctamente');
+
+        }
+      }
     }
 }

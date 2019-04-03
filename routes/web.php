@@ -35,9 +35,12 @@ Route::middleware(['web'])->group(function(){
   Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 });
 
+//Rutas modulo Buildings
 Route::middleware(['web','verified','auth'])->group(function(){
     Route::post('buildings/store', 'BuildingsController@store')->name('buildings.store');
     Route::post('buildings/disable', 'BuildingsController@disable')->name('buildings.disable');
+    Route::post('buildings/activate', 'BuildingsController@activate')->name('buildings.activate');
+    Route::post('buildings/delete', 'BuildingsController@destroy')->name('buildings.delete');
 
     Route::get('buildings', 'BuildingsController@index')->name('buildings.index');
     Route::get('buildings/create', 'BuildingsController@create')->name('buildings.create');
